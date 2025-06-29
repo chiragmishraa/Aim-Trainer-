@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aim Trainer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="header">
+    <h1>Aim Trainer</h1>
+    <button id="theme-toggle">⏾</button>
+  </div>
+
+  <div class="hud">
+    <div>Time: <span id="timer">30</span>s</div>
+    <div>Score: <span id="score">0</span></div>
+  </div>
+
+  <div class="game-area" id="game-area">
+    <!-- Targets will spawn here dynamically -->
+  </div>
+
+  <div class="speed-controls" style="display:flex;justify-content:center;gap:10px;margin:10px 0 0 0;">
+    <button id="speed-low-btn" class="speed-btn">Low Speed</button>
+    <button id="speed-mid-btn" class="speed-btn active">Mid Speed</button>
+    <button id="speed-high-btn" class="speed-btn">High Speed</button>
+  </div>
+
+  <div class="controls" style="display:flex;justify-content:center;gap:10px;margin-top:20px;">
+    <button id="start-btn">Start</button>
+    <button id="stop-btn" disabled>Stop</button>
+    <button id="score-check-btn">Score Check</button>
+  </div>
+
+  <div class="end-screen" id="end-screen">
+    <h2>Game Over</h2>
+    <p>Your Score: <span id="final-score"></span></p>
+    <p>Average Reaction Time: <span id="avg-reaction"></span> ms</p>
+    <button id="restart-btn">Restart</button>
+  </div>
+
+  <div id="score-history-container" class="modal-theme" style="display:none;position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:1000;align-items:center;justify-content:center;">
+    <div class="modal-content">
+      <button id="close-history-btn" style="position:absolute;top:8px;right:10px;font-size:1.2em;">&times;</button>
+      <div class="score-history-content"></div>
+      <button id="clear-history-btn" class="clear-history-btn">Clear History</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
