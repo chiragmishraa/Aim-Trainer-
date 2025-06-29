@@ -31,6 +31,10 @@ const speedLowBtn = document.getElementById('speed-low-btn');
 const speedMidBtn = document.getElementById('speed-mid-btn');
 const speedHighBtn = document.getElementById('speed-high-btn');
 
+// Sound effect for scoring
+const scoreAudio = new Audio('https://cdn.jsdelivr.net/gh/gleitz/midi-js-soundfonts@gh-pages/FluidR3_GM/acoustic_grand_piano-mp3/A4.mp3');
+scoreAudio.volume = 0.4;
+
 // Theme toggle functionality
 themeToggle.addEventListener('click', () => {
   body.classList.toggle('light-mode');
@@ -123,6 +127,9 @@ function spawnTarget() {
 
     score++;
     scoreDisplay.textContent = score;
+    // Play sound effect
+    scoreAudio.currentTime = 0;
+    scoreAudio.play();
 
     target.remove();
     spawnTarget();
