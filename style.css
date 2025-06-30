@@ -301,6 +301,8 @@ body {
   flex-wrap: wrap;
   gap: 18px;
   flex-direction: column;
+  border-top: 1.5px solid var(--accent-color);
+  padding-top: 10px;
 }
 #score-history-container .summary-row {
   display: flex;
@@ -382,4 +384,76 @@ body {
 #score-history-container .speed {
   color: #f7c325;
   font-weight: bold;
+}
+
+/* --- Responsive Mobile Fixes --- */
+@media (max-width: 600px) {
+  body {
+    height: auto;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-bottom: 90px; /* space for sticky controls */
+  }
+  .header {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 10px 8px;
+    font-size: 16px;
+  }
+  .header h1 {
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+  .hud {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    font-size: 15px;
+    padding: 8px 10px;
+    width: 100%;
+  }
+  .hud > div {
+    margin: 0 8px;
+    min-width: 90px;
+    text-align: left;
+  }
+  .game-area {
+    min-height: 300px;
+    height: 40vh;
+    max-height: 50vh;
+  }
+  .speed-controls, .controls {
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    z-index: 100;
+    background: var(--secondary-color);
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+    justify-content: space-around;
+    gap: 6px;
+    padding: 8px 0;
+  }
+  .speed-controls {
+    bottom: 56px;
+    border-top: 1px solid var(--accent-color);
+  }
+  .controls {
+    bottom: 0;
+    border-top: 2px solid var(--accent-color);
+  }
+  .speed-btn, #start-btn, #stop-btn, #score-check-btn {
+    font-size: 14px;
+    padding: 8px 10px;
+    min-width: 80px;
+  }
+  .modal-content {
+    max-width: 98vw;
+    padding: 10px 2vw;
+  }
+  #score-history-container .score-history-content {
+    max-height: 180px;
+    font-size: 14px;
+  }
 }
