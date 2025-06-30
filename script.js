@@ -187,6 +187,15 @@ function showScoreHistory() {
   let bestAvg = parseInt(localStorage.getItem('bestAvgReaction'), 10);
   let highDisplay = (isNaN(high) || high <= 0) ? '-' : high;
   let bestAvgDisplay = (isNaN(bestAvg) || bestAvg <= 0) ? '-' : bestAvg + ' ms';
+  // Find the speed for the highest score
+  let highSpeed = '-';
+  if (!isNaN(high) && high > 0 && history.length > 0) {
+    // Find the most recent entry with the highest score
+    const highEntry = history.filter(item => item.score === high).slice(-1)[0];
+    if (highEntry && highEntry.speed) {
+      highSpeed = highEntry.speed;
+    }
+  }
   let html = `<h3>Score History</h3><ul style="max-height:180px;overflow:auto;">`;
   if (history.length === 0) {
     html += '<li>No scores yet.</li>';
@@ -197,6 +206,7 @@ function showScoreHistory() {
   }
   html += `</ul><div class='summary'>
     <div class='summary-row'><span class='summary-label'>Highest Score:</span> <span class='summary-value'>${highDisplay}</span></div>
+    <div class='summary-row'><span class='summary-label'>Speed:</span> <span class='summary-value speed'>${highSpeed}</span></div>
     <div class='summary-row'><span class='summary-label'>Best Avg Reaction:</span> <span class='summary-value best'>${bestAvgDisplay}</span></div>
   </div>`;
   scoreHistoryContainer.querySelector('.score-history-content').innerHTML = html;
